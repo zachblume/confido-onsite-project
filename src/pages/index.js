@@ -20,23 +20,38 @@ const Home = () => {
 
     return (
         <>
-            <h1>Hello world</h1>
-            {todos?.map((todo) => (
-                <div className={todo?.done ? "line-through	" : ""} key={todo.id}>
-                    {todo.task}
-                    <button onClick={() => markDone(todo.id)}>Mark done</button>
-                    <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-                </div>
-            ))}
-            <form
-                onSubmit={(event) => {
-                    event.preventDefault();
-                    insert(event.target.task.value);
-                }}
-            >
-                <input type="text" name="task" />
-                <button type="submit">New Todo</button>
-            </form>
+            <div className="py-10">
+                <header>
+                    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                        <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 mb-3">
+                            Todos
+                        </h1>
+                    </div>
+                </header>
+                <main className="main">
+                    <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                        {todos?.map((todo) => (
+                            <div
+                                className={"todo " + (todo?.done ? "line-through	" : "")}
+                                key={todo.id}
+                            >
+                                {todo.task}
+                                <button onClick={() => markDone(todo.id)}>Mark done</button>
+                                <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                            </div>
+                        ))}
+                        <form
+                            onSubmit={(event) => {
+                                event.preventDefault();
+                                insert(event.target.task.value);
+                            }}
+                        >
+                            <input type="text" name="task" />
+                            <button type="submit">New Todo</button>
+                        </form>
+                    </div>
+                </main>
+            </div>
         </>
     );
 };
