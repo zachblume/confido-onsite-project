@@ -1,19 +1,7 @@
-// @ts-check
-const { test, expect } = require("@playwright/test");
+import { test, expect } from "@playwright/test";
 
-test("has title", async ({ page }) => {
-    await page.goto("https://playwright.dev/");
-
-    // Expect a title "to contain" a substring.
-    await expect(page).toHaveTitle(/Playwright/);
-});
-
-test("get started link", async ({ page }) => {
-    await page.goto("https://playwright.dev/");
-
-    // Click the get started link.
-    await page.getByRole("link", { name: "Get started" }).click();
-
-    // Expects the URL to contain intro.
-    await expect(page).toHaveURL(/.*intro/);
+test("should navigate to the index page", async ({ page }) => {
+    // Start from the index page (the baseURL is set via the webServer in the playwright.config.ts)
+    await page.goto("/");
+    await expect(page.locator("h1")).toContainText("Hello world");
 });
