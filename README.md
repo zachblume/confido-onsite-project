@@ -1,1 +1,1 @@
-Getting nexjts running on heroku
+Getting nextjs running on heroku
