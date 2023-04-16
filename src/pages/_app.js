@@ -1,10 +1,19 @@
 import "@/styles/globals.css";
-import Layout from "@/components/layouts/Layout";
+import Layout from "@/components/Layout/Layout";
+import { SWRConfig } from "swr";
 
-export default function App({ Component, pageProps }) {
+const swrOptions = {
+    fetcher: (url, init) => fetch(url, init).then((res) => res.json()),
+    keepPreviousData: true,
+};
+
+const App = ({ Component, pageProps }) => {
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <SWRConfig value={swrOptions}>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </SWRConfig>
     );
-}
+};
+export default App;
