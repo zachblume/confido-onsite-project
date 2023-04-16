@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button,
+.button {
+    @apply bg-sky-500 text-white font-normal py-1 px-2 rounded m-1 shadow ml-3;
+}
+
+div:not(div[id]) {
+    @apply my-3 py-3 border-b;
+}
+
+html {
+    @apply m-12;
+}
+
+input {
+    @apply border rounded p-1 m-1;
+}
+
+button[type="submit"] {
+    @apply button !important;
+}
+
+h1 {
+    @apply text-2xl font-bold;
+}

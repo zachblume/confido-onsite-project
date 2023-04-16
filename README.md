@@ -8,5 +8,9 @@
 -   src directory
 -   global layout in components/Layout/Layout
 -   Inter for font in \_app
--   SWR default config is keepPrevious: true
 -   /health and /ping (pong) api routes
+
+db:
+
+-   SWR default config is keepPrevious: true
+-   useQuery hook for postgrest-js wrapped with useSWR
