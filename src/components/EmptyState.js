@@ -1,8 +1,4 @@
-import {
-    ArrowPathRoundedSquareIcon,
-    ArrowUpIcon,
-    BarsArrowUpIcon,
-} from "@heroicons/react/24/outline";
+import { BarsArrowUpIcon } from "@heroicons/react/24/outline";
 
 const EmptyState = ({ openUploadModal }) => (
     <button

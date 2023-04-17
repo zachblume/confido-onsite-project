@@ -12,6 +12,17 @@ const AddProductForm = ({ insertFormHandler, submitEvent, setOpen }) => {
                     label="Description"
                 />
                 <Input type="text" name="price" placeholder="price" label="Price" />
+                {/* generate a date now() like 01/01/2023 */}
+                <Input
+                    type="text"
+                    name="date"
+                    placeholder={new Date().toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                    })}
+                    label="Date"
+                />
                 <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                     <button
                         type="submit"
