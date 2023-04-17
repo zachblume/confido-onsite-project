@@ -14,7 +14,7 @@ Other constraints from my line of questions:
 
 ## Zach Blume for Confido
 
-Boilerplate configurations I started with:
+notes:
 
 -   Tailwind
 -   useSWR
