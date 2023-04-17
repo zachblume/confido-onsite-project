@@ -53,7 +53,11 @@ const Home = () => {
     return (
         <div className="mx-auto max-w-7xl px-4 lg:px-8 main my-10">
             <PageTitle {...{ title, description, breadCrumbs: [{ url: "/", text: "Products" }] }}>
-                <button type="button" className="ml-3 btn-secondary" onClick={openAddProductModal}>
+                <button
+                    type="button"
+                    className="btn-secondary sm:ml-3"
+                    onClick={openAddProductModal}
+                >
                     Add Product
                 </button>
                 <Modal
