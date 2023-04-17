@@ -5,7 +5,9 @@ import { SWRConfig } from "swr";
 const swrOptions = {
     fetcher: (url, init) => fetch(url, init).then((res) => res.json()),
     keepPreviousData: true,
-    refreshInterval: 250,
+    refreshInterval: 100,
+    dedupingInterval: 100,
+    focusThrottleInterval: 100,
 };
 
 const App = ({ Component, pageProps }) => {
