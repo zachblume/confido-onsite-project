@@ -3,19 +3,20 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 const classNames = (...classes) => classes.filter(Boolean).join(" ");
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const user = {
-    name: "Tom Cook",
-    email: "tom@example.com",
-    imageUrl:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Kara Holsinsky",
+    email: "kara@confidotech.com",
 };
 const navigation = [
-    { name: "Dashboard", href: "#", current: true },
-    { name: "Team", href: "#", current: false },
-    { name: "Projects", href: "#", current: false },
-    { name: "Calendar", href: "#", current: false },
+    { name: "Products", href: "/", current: true },
+    { name: "Timeline", href: "/timeline", current: false },
+    // { name: "Projects", href: "#", current: false },
+    // { name: "Calendar", href: "#", current: false },
 ];
 const userNavigation = [
     { name: "Your Profile", href: "#" },
@@ -27,6 +28,7 @@ const GlobalLayout = ({ children }) => {
     return (
         <div className={inter.className}>
             <>
+                <ToastContainer />
                 <div className="min-h-full">
                     <Disclosure as="nav" className="border-b border-gray-200 bg-white">
                         {({ open }) => (
@@ -35,16 +37,7 @@ const GlobalLayout = ({ children }) => {
                                     <div className="flex h-16 justify-between">
                                         <div className="flex">
                                             <div className="flex flex-shrink-0 items-center">
-                                                <img
-                                                    className="block h-8 w-auto lg:hidden"
-                                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                                    alt="Your Company"
-                                                />
-                                                <img
-                                                    className="hidden h-8 w-auto lg:block"
-                                                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                                                    alt="Your Company"
-                                                />
+                                                <div className="brand">Confido</div>
                                             </div>
                                             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                                                 {navigation.map((item) => (
@@ -53,7 +46,7 @@ const GlobalLayout = ({ children }) => {
                                                         href={item.href}
                                                         className={classNames(
                                                             item.current
-                                                                ? "border-indigo-500 text-gray-900"
+                                                                ? "border-fuchsia-500 text-gray-900"
                                                                 : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
                                                             "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
                                                         )}
@@ -69,7 +62,7 @@ const GlobalLayout = ({ children }) => {
                                         <div className="hidden sm:ml-6 sm:flex sm:items-center">
                                             <button
                                                 type="button"
-                                                className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                                className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2"
                                             >
                                                 <span className="sr-only">View notifications</span>
                                                 <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -78,14 +71,17 @@ const GlobalLayout = ({ children }) => {
                                             {/* Profile dropdown */}
                                             <Menu as="div" className="relative ml-3">
                                                 <div>
-                                                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2">
                                                         <span className="sr-only">
                                                             Open user menu
                                                         </span>
-                                                        <img
+
+                                                        <Image
                                                             className="h-8 w-8 rounded-full"
-                                                            src={user.imageUrl}
-                                                            alt=""
+                                                            width="100"
+                                                            height="100"
+                                                            src="/avatar.png"
+                                                            alt="avatar"
                                                         />
                                                     </Menu.Button>
                                                 </div>
@@ -122,7 +118,7 @@ const GlobalLayout = ({ children }) => {
                                         </div>
                                         <div className="-mr-2 flex items-center sm:hidden">
                                             {/* Mobile menu button */}
-                                            <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                            <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2">
                                                 <span className="sr-only">Open main menu</span>
                                                 {open ? (
                                                     <XMarkIcon
@@ -149,7 +145,7 @@ const GlobalLayout = ({ children }) => {
                                                 href={item.href}
                                                 className={classNames(
                                                     item.current
-                                                        ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                                                        ? "border-fuchsia-500 bg-fuchsia-50 text-fuchsia-700"
                                                         : "border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800",
                                                     "block border-l-4 py-2 pl-3 pr-4 text-base font-medium"
                                                 )}
@@ -162,10 +158,12 @@ const GlobalLayout = ({ children }) => {
                                     <div className="border-t border-gray-200 pb-3 pt-4">
                                         <div className="flex items-center px-4">
                                             <div className="flex-shrink-0">
-                                                <img
-                                                    className="h-10 w-10 rounded-full"
-                                                    src={user.imageUrl}
-                                                    alt=""
+                                                <Image
+                                                    className="h-8 w-8 rounded-full"
+                                                    width="100"
+                                                    height="100"
+                                                    src="/avatar.png"
+                                                    alt="avatar"
                                                 />
                                             </div>
                                             <div className="ml-3">
@@ -178,7 +176,7 @@ const GlobalLayout = ({ children }) => {
                                             </div>
                                             <button
                                                 type="button"
-                                                className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                                className="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2"
                                             >
                                                 <span className="sr-only">View notifications</span>
                                                 <BellIcon className="h-6 w-6" aria-hidden="true" />
