@@ -1,5 +1,5 @@
 import Input from "./Input";
-const AddProductForm = ({ insertFormHandler, submitEvent }) => {
+const AddProductForm = ({ insertFormHandler, submitEvent, setOpen }) => {
     return (
         <div>
             <h3 className="text-2xl font-normal">Add a new product</h3>
@@ -12,9 +12,21 @@ const AddProductForm = ({ insertFormHandler, submitEvent }) => {
                     label="Description"
                 />
                 <Input type="text" name="price" placeholder="price" label="Price" />
-                <button type="submit" className="inline-flex items-center btn-primary">
-                    Submit
-                </button>
+                <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
+                    <button
+                        type="submit"
+                        className="inline-flex w-full justify-center rounded-md bg-fuchsia-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-fuchsia-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-600 sm:col-start-2"
+                    >
+                        Add
+                    </button>
+                    <button
+                        type="button"
+                        className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0"
+                        onClick={() => setOpen(false)}
+                    >
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
     );
