@@ -2,10 +2,11 @@ import { useQuery, postgrest } from "@/lib/db";
 
 const Home = () => {
     const { data: todos, error, mutate } = useQuery(postgrest.from("todos").select("*"));
-    const insert = async (task) => mutate(await postgrest.from("todos").insert({ task }));
+    const insert = async (task) => (await postgrest.from("todos").insert({ task })) && mutate();
     const markDone = async (id) =>
-        mutate(await postgrest.from("todos").update({ done: true }).match({ id }));
-    const deleteTodo = async (id) => mutate(await postgrest.from("todos").delete().match({ id }));
+        (await postgrest.from("todos").update({ done: true }).match({ id })) && mutate();
+    const deleteTodo = async (id) =>
+        (await postgrest.from("todos").delete().match({ id })) && mutate();
 
     return (
         <div className="py-10">
