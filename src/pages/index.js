@@ -7,6 +7,7 @@ import AddProductForm from "@/components/AddProductForm";
 import Modal from "@/components/Modal";
 import { useState } from "react";
 import UploadProductForm from "@/components/UploadProductForm";
+import EmptyState from "@/components/EmptyState";
 
 const capitlizeKeys = (obj) => {
     const newObj = {};
@@ -75,7 +76,11 @@ const Home = () => {
                 </Modal>
             </PageTitle>
             <Main>
-                <Table rows={sanitizedRows} />
+                {sanitizedRows?.length ? (
+                    <Table rows={sanitizedRows} />
+                ) : (
+                    <EmptyState openUploadModal={openUploadModal} />
+                )}
             </Main>
         </div>
     );
