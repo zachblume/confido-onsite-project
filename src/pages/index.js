@@ -8,6 +8,14 @@ import Modal from "@/components/Modal";
 import { useState } from "react";
 import UploadProductForm from "@/components/UploadProductForm";
 
+const capitlizeKeys = (obj) => {
+    const newObj = {};
+    Object.keys(obj).forEach((key) => {
+        newObj[key.charAt(0).toUpperCase() + key.slice(1)] = obj[key];
+    });
+    return newObj;
+};
+
 const Home = () => {
     const { data: products, error, mutate } = useQuery(postgrest.from("products").select("*"));
     const insert = async (obj) => (await postgrest.from("products").insert(obj)) && mutate();
@@ -37,6 +45,10 @@ const Home = () => {
     let title = "Products";
     let description = "A list of all the products and pricing information.";
 
+    const sanitizedRows = products?.map((row) =>
+        capitlizeKeys({ ...row, date: row.date ? row.date : "now" })
+    );
+
     return (
         <div className="mx-auto max-w-7xl px-4 lg:px-8 main my-10">
             <PageTitle {...{ title, description, breadCrumbs: [{ url: "/", text: "Products" }] }}>
@@ -63,7 +75,7 @@ const Home = () => {
                 </Modal>
             </PageTitle>
             <Main>
-                <Table rows={products} />
+                <Table rows={sanitizedRows} />
             </Main>
         </div>
     );

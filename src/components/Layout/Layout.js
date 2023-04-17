@@ -7,17 +7,13 @@ import Image from "next/image";
 const classNames = (...classes) => classes.filter(Boolean).join(" ");
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
 
 const user = {
     name: "Kara Holsinsky",
     email: "kara@confidotech.com",
 };
-const navigation = [
-    { name: "Products", href: "/", current: true },
-    { name: "Timeline", href: "/timeline", current: false },
-    // { name: "Projects", href: "#", current: false },
-    // { name: "Calendar", href: "#", current: false },
-];
+
 const userNavigation = [
     { name: "Your Profile", href: "#" },
     { name: "Settings", href: "#" },
@@ -25,6 +21,14 @@ const userNavigation = [
 ];
 
 const GlobalLayout = ({ children }) => {
+    // use router to mark the ojbect for the current path as current:true
+
+    const router = useRouter();
+    const navigation = [
+        { name: "Products", href: "/" },
+        { name: "Timeline", href: "/timeline" },
+    ].map((item) => ({ ...item, current: item.href === router.pathname }));
+
     return (
         <div className={inter.className}>
             <>
