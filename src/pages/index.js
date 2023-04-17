@@ -2,8 +2,7 @@ import { useQuery, postgrest } from "@/lib/db";
 
 const Home = () => {
     const { data: todos, error, mutate } = useQuery(postgrest.from("todos").select("*"));
-    const insert = async (task) =>
-        mutate([...todos, ...(await postgrest.from("todos").insert({ task }).select()).data]);
+    const insert = async (task) => (await postgrest.from("todos").insert({ task })) && mutate();
     const markDone = async (id) =>
         (await postgrest.from("todos").update({ done: true }).match({ id })) && mutate();
     const deleteTodo = async (id) =>
