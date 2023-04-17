@@ -10,13 +10,10 @@ const Home = () => {
 
     return (
         <div className="py-10">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 lg:px-8 main">
                 <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 mb-3">
                     Todos
                 </h1>
-            </div>
-
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 main">
                 {todos?.map((todo) => (
                     <div className={"todo " + (todo?.done && "line-through")} key={todo.id}>
                         {todo.task}
