@@ -41,7 +41,15 @@ const GlobalLayout = ({ children }) => {
                                     <div className="flex h-16 justify-between">
                                         <div className="flex">
                                             <div className="flex flex-shrink-0 items-center">
-                                                <div className="brand">Confido</div>
+                                                <div className="brand">
+                                                    <Image
+                                                        src="/logo2.png"
+                                                        height="128"
+                                                        width="466"
+                                                        className="w-32"
+                                                        alt="logo"
+                                                    />
+                                                </div>
                                             </div>
                                             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                                                 {navigation.map((item) => (
