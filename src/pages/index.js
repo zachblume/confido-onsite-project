@@ -20,10 +20,6 @@ const capitlizeKeys = (obj) => {
 const Home = () => {
     const { data: products, error, mutate } = useQuery(postgrest.from("products").select("*"));
     const insert = async (obj) => (await postgrest.from("products").insert(obj)) && mutate();
-    const markDone = async (id) =>
-        (await postgrest.from("products").update({ done: true }).match({ id })) && mutate();
-    const deleteTodo = async (id) =>
-        (await postgrest.from("products").delete().match({ id })) && mutate();
 
     // Add a product modal
     const [addProductModalOpen, setAddProductModalOpen] = useState(false);
